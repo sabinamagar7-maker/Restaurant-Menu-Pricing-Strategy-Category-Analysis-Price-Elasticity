@@ -95,7 +95,7 @@ It provides a consolidated view of portfolio performance and allows monthly perf
 * Pricing Insights
 * Product Revenue & Profit Rankings
 
-![Executive Dashboard](https://github.com/sabinamagar7-maker/Product-Portfolio-Performance-Assortment-Optimization-Analysis/blob/main/excel_dashboard/00_Dashboard_Monthly%20Revenue%20and%20Product%20Performance.png)
+![Executive Dashboard](https://github.com/sabinamagar7-maker/Product-Portfolio-Performance-Assortment-Optimization-Analysis/blob/main/3_Dashboard_documents/00_Dashboard_Monthly%20Revenue%20and%20Product%20Performance.png)
 
 ---
 

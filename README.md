@@ -86,13 +86,12 @@ It provides a consolidated view of portfolio performance and allows monthly perf
 
 ### Dashboard Features
 
-* Revenue & Profit KPIs
+* Monthly Revenue & Profit Tracker
 * Product Performance Tracking
 * Category Performance Monitoring
 * Monthly Revenue Trends
-* Promotion Analysis
+* Monthly Sales Volume
 * Consumer Behaviour Analysis
-* Pricing Insights
 * Product Revenue & Profit Rankings
 
 ![Executive Dashboard](https://github.com/sabinamagar7-maker/Product-Portfolio-Performance-Assortment-Optimization-Analysis/blob/main/3_Dashboard_documents/00_Dashboard_Monthly_Revenue_&_Product%20Performance.png?raw=true)

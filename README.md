@@ -271,11 +271,4 @@ Evaluated external demand drivers including weather conditions and special event
 
 ---
 
-## Author
 
-**Sabina Thapa Magar**
-
-Business & Operational Analyst | SQL | Python | Power BI | Excel
-
-GitHub: https://github.com/sabinamagar7-maker
-LinkedIn: https://linkedin.com/in/sabinamagar/

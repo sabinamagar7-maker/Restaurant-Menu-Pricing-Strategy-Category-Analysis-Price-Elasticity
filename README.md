@@ -78,7 +78,7 @@ Product-Portfolio-Performance-Analysis
 
 This project includes an interactive dashboard built in Google Sheets.
 
-**View Dashboard:** [Google Sheets Analysis & Dashboard](ttps://docs.google.com/spreadsheets/d/1JUMQupT7qqTVRgpUAVaei7FdZX-TIqzQw9ThI4_P0x8/edit?gid=448116014#gid=448116014)
+**View Dashboard:** [Google Sheets Analysis & Dashboard](https://docs.google.com/spreadsheets/d/1JUMQupT7qqTVRgpUAVaei7FdZX-TIqzQw9ThI4_P0x8/edit?gid=448116014#gid=448116014)
 
 Access: View Only
 

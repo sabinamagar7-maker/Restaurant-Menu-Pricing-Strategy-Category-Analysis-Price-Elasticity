@@ -1,263 +1,53 @@
-# Product Portfolio & Performance Analysis
+# Restaurant Menu Pricing Strategy: Category-Level Analysis & Price Elasticity
 
-## Overview
+An independent data analysis project built in Google Sheets, looking at how pricing, cost efficiency, and price elasticity behave across a 14-item restaurant menu sold through 5 different restaurant categories.
 
-This project applies Category Management and Product Portfolio Analysis techniques to a restaurant sales dataset containing 14 products across 5 categories.
+## Why this project
 
-Although the dataset originates from the restaurant industry, the analytical framework focuses on product performance, category contribution, pricing effectiveness, promotional impact, consumer behavior, and portfolio optimization. These methods are commonly used in retail, e-commerce, and category management environments to support data-driven commercial decision-making.
+Most menu-level pricing analysis treats a dish as one thing : one price, one cost, one performance number. But the same dish can be sold in very different settings (a fine dining restaurant vs. a food stall vs. a cafe), and those settings can have completely different pricing power, cost structure, and customer price sensitivity. This project started as a standard item-level pricing analysis, and along the way I found that blending all categories together into one number per item was hiding real differences, so the analysis was rebuilt around that finding, at the category-item level instead.
 
-Tools Used: Python, Pandas, NumPy, Matplotlib, Seaborn, Excel, Google Sheets
+## What's in the analysis
 
----
+- **Pricing Analysis** : average selling price, market price, and ingredient cost per category-item combination; price gap vs. market; margin %; ingredient cost %; a negotiation-priority framework (which products are worth pushing suppliers on) and a cost-efficiency classification, both benchmarked against each category's own average rather than one blended average across the whole menu.
+- **Price Elasticity** : price elasticity of demand per category-item combination, calculated using a log-log regression (`ln(Quantity)` vs. `ln(Price)`), with sample-size and price-variation checks built in so a result isn't trusted just because a formula returned a number.
+- **Interactive Dashboard** : revenue and profit by category, monthly revenue trends, and slicers to filter by category and product for closer inspection.
 
-## Business Objective
+Everything is built on dynamic formulas referencing the raw dataset directly, rather than manual pivot tables or copy-pasted snapshots — so the whole workbook updates automatically as new data is added, without needing to rebuild anything.
 
-The objective of this project is to assess portfolio performance and identify opportunities to improve revenue, profitability, and product assortment effectiveness.
-
-### Key Business Questions
-
-* Which categories contribute most to revenue and profit?
-* Which products drive overall portfolio performance?
-* Which products should be expanded or reviewed?
-* How effective are current pricing and promotion strategies?
-* What consumer behavior patterns influence demand?
-* How can portfolio decisions be optimized using data?
-
----
-
-## Dataset
-
-The analysis is based on a restaurant sales dataset containing transactional records for 14 products across 5 categories.
-
-The dataset was used as a proxy product portfolio to evaluate category performance, product contribution, profitability, pricing strategy, promotional effectiveness, seasonality, and consumer demand patterns.
-
-### Key Fields
-
-* Product Name
-* Category
-* Quantity Sold
-* Ingredient Cost
-* Market Price
-* Selling Price
-* Revenue
-* Profit
-* Promotion Status
-* Weather Conditions
-* Special Events
-* Transaction Date
-
----
-
-## Project Structure
-
-```text
-Product-Portfolio-Performance-Analysis
-│
-├── data
-│   └── restaurant_sales.csv
-│
-│
-├── dashboard_screenshots
-|
-│
-└── README.md
-```
-
----
-
-## Interactive Dashboard
-
-This project includes an interactive dashboard built in Google Sheets.
+## Dashboard
 
 **View Dashboard:** [Google Sheets Analysis & Dashboard](https://docs.google.com/spreadsheets/d/1JUMQupT7qqTVRgpUAVaei7FdZX-TIqzQw9ThI4_P0x8/edit?gid=448116014#gid=448116014)
 
 Access: View Only
 
-It provides a consolidated view of portfolio performance and allows monthly performance monitoring through dynamic filters.
+![Dashboard Image](https://github.com/sabinamagar7-maker/Restaurant-Menu-Pricing-Strategy-Category-Analysis-Price-Elasticity/blob/main/2_Dashboard_image/Dashboard_Monthly_Revenue_Product_Performance.png)
 
-### Dashboard Features
 
-* Monthly Revenue & Profit Tracker
-* Cateogry Analysis
-* Product Analysis
-* Pricing and Elasticity Analysis
 
+## Data
 
-![Executive Dashboard](https://github.com/sabinamagar7-maker/Product-Portfolio-Performance-Assortment-Optimization-Analysis/blob/main/3_Dashboard_documents/00_Dashboard_Monthly_Revenue_&_Product%20Performance.png?raw=true)
+The dataset covers 14 menu items sold across 5 restaurant categories (Cafe, Casual Dining, Fine Dining, Food Stall, Kopitiam), with the following fields per transaction:
 
----
+`Date, Restaurant_ID, Restaurant_Category, Product_Item, Meal_Type, Ingredients, Ingredient_Cost, Market_Price, Selling_Price, Quantity_Sold, Has_Promotion, Special_Event, Weather_Condition`
 
-## Key Performance Indicators
+## Method, in short
 
-| KPI            |  Value |
-| -------------- | -----: |
-| Revenue        | €32.7M |
-| Profit         | €24.9M |
-| Average Margin |  74.5% |
-| Categories     |      5 |
-| Products       |     14 |
+- **Category + Item as the unit of analysis** : not blended across categories, since pricing power, cost structure, and price sensitivity differ meaningfully by venue type.
+- **Per-unit vs. volume-weighted metrics, chosen deliberately per question** : e.g. margin % is volume-weighted (reflects actual realized profit), while ingredient cost % is per-unit (reflects the dish's structural cost, independent of how much it happened to sell).
+- **Category-specific benchmarks**, not one benchmark across the whole menu : so a food stall item isn't judged against a fine dining item's pricing power.
+- **Elasticity checked before it's trusted** : sample size and price-point variation are checked per category-item combination before the elasticity number is used for anything.
 
----
+## Tools
 
-## Analytical Approach
+Google Sheets : dynamic array formulas (`UNIQUE`, `FILTER`, `AVERAGEIFS`, `SUMPRODUCT`, `SLOPE`, `RSQ`), no add-ons or external software.
 
-While the underlying data comes from restaurant operations, each menu item is treated as an individual product within a broader portfolio. This allows the project to simulate common Category Management activities such as:
+## Limitations
 
-* Product performance evaluation
-* Category performance tracking
-* Product portfolio optimization
-* Pricing analysis
-* Promotion effectiveness measurement
-* Consumer behavior analysis
+- This is a constructed/practice dataset, not live business data, some patterns (e.g. similar elasticity across very different venue types) may say more about how the dataset was generated than about real customer behavior.
+- Elasticity is a simple log-log regression; it doesn't control for confounders like promotions, special events, or weather. A multiple regression or a model built for zero-inflated demand would be a more complete next step.
+- Negotiation-priority and cost-efficiency benchmarks are relative to this dataset's own category averages, not external industry or company targets.
+- At real business scale (hundreds or thousands of SKUs), this would move from spreadsheet formulas to a proper pricing platform or a Python/SQL pipeline : the logic here is the same, just built by hand and at a much smaller scale.
 
-The objective is to demonstrate how analytical techniques used in Category Management can be applied to support assortment and portfolio decisions.
+## Author
 
-
-## 1. Category Performance Analysis
-
-Evaluated category-level revenue, profit, sales volume, and profitability to identify key portfolio contributors.
-
-### Key Findings
-
-* Food Stall generated the highest revenue (€9.7M).
-* Fine Dining achieved the highest profit margin (84.4%).
-* The three largest categories accounted for the majority of portfolio revenue and profit.
-
----
-
-## 2. Product Performance Analysis
-
-Analyzed product-level revenue, profitability, sales volume, and revenue contribution.
-
-### Key Findings
-
-* Kaya Toast Set generated the highest revenue (€5.24M).
-* The top three products contributed approximately 44% of total portfolio revenue.
-* Revenue concentration highlights key products driving business performance.
-
----
-
-## 3. Product Portfolio Matrix
-
-Products were segmented based on revenue and profitability performance to support portfolio optimization decisions.
-
-### Portfolio Results
-
-* 7 High-Performing Products generated €24.2M revenue.
-* 7 Underperforming Products generated €8.5M revenue.
-
-### Recommendations
-
-**Expand Portfolio**
-
-* Chicken Chop
-* Kaya Toast Set
-* Spaghetti Carbonara
-* Beef Rendang
-* Nasi Lemak
-* Cendol
-* Tandoori Chicken
-
-**Review Performance**
-
-* Laksa
-* Roti Canai
-* Chicken Rice
-* Char Kway Teow
-* Mushroom Soup
-* Teh Tarik
-* Iced Lemon Tea
-
----
-
-## 4. Pricing Analysis
-
-Evaluated pricing effectiveness by comparing selling prices against market benchmarks and assessing profitability outcomes.
-
-### Key Findings
-
-* Most products maintained strong profit margins despite premium pricing.
-* Revenue performance remained strong across products with significant price premiums.
-* Results indicate pricing power and customer willingness to pay.
-
----
-
-## 5. Promotion Analysis
-
-Measured the impact of promotional activities on revenue, profit, and sales volume.
-
-### Key Findings
-
-* Non-promotional sales generated €26.4M revenue.
-* Promotional periods generated €6.3M revenue.
-* Promotions increased sales volume but were not the primary revenue driver.
-
----
-
-## 6. Seasonality Analysis
-
-Analyzed monthly revenue trends to identify seasonal demand patterns.
-
-### Key Findings
-
-* Revenue peaks occurred in January, August, and December.
-* September experienced the lowest monthly revenue.
-* Seasonal fluctuations indicate opportunities for targeted promotional planning and inventory management.
-
----
-
-## 7. Consumer Behaviour Analysis
-
-Evaluated external demand drivers including weather conditions and special events.
-
-### Key Findings
-
-* Sunny weather generated the highest revenue (€16.4M).
-* Cloudy weather generated €9.9M revenue.
-* Rainy weather generated €6.4M revenue.
-* Special events contributed €2.2M revenue and increased overall profitability.
-
----
-
-# Strategic Recommendations
-
-### Product Portfolio Optimization
-
-* Expand high-performing products with strong revenue and profitability performance.
-* Review underperforming products for repositioning, promotion, or potential removal from the portfolio.
-
-### Pricing Strategy
-
-* Maintain pricing for products demonstrating strong profitability and pricing power.
-* Continuously monitor market pricing and customer response to future price adjustments.
-
-### Promotion Strategy
-
-* Prioritize promotions for high-margin products to maximize profitability.
-* Use targeted campaigns during lower-demand periods.
-
-### Demand Planning
-
-* Align inventory planning and promotional activities with seasonal demand trends.
-* Prepare for increased demand during peak-performing months and special events.
-
----
-
-# Skills Demonstrated
-
-* Product Portfolio Analysis
-* Category Performance Analysis
-* Product Performance Tracking
-* Pricing Analytics
-* Promotion Effectiveness Analysis
-* Consumer Behaviour Analysis
-* Assortment Optimization
-* Dashboard Development
-* KPI Reporting
-* Excel & Google Sheets
-* Python Data Analysis
-* Business Intelligence
-
----
-
-
+Sabina Thapa Magar — [GitHub](https://github.com/sabinamagar7-maker)

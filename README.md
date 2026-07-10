@@ -56,18 +56,9 @@ Product-Portfolio-Performance-Analysis
 ├── data
 │   └── restaurant_sales.csv
 │
-├── notebook
-│   └── category_management_analysis.ipynb
 │
 ├── dashboard_screenshots
-│   ├── executive_dashboard.pdf
-│   ├── category_analysis.pdf
-│   ├── product_analysis.pdf
-│   ├── portfolio_matrix.pdf
-│   ├── pricing_analysis.pdf
-│   ├── promotion_analysis.pdf
-│   ├── seasonality_analysis.pdf
-│   └── consumer_behaviour_analysis.pdf
+|
 │
 └── README.md
 ```
@@ -87,12 +78,10 @@ It provides a consolidated view of portfolio performance and allows monthly perf
 ### Dashboard Features
 
 * Monthly Revenue & Profit Tracker
-* Product Performance Tracking
-* Category Performance Monitoring
-* Monthly Revenue Trends
-* Monthly Sales Volume
-* Consumer Behaviour Analysis
-* Product Revenue & Profit Rankings
+* Cateogry Analysis
+* Product Analysis
+* Pricing and Elasticity Analysis
+
 
 ![Executive Dashboard](https://github.com/sabinamagar7-maker/Product-Portfolio-Performance-Assortment-Optimization-Analysis/blob/main/3_Dashboard_documents/00_Dashboard_Monthly_Revenue_&_Product%20Performance.png?raw=true)
 
